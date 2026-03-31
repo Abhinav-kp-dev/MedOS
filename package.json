@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "pharmacy-management-system",
   "private": true,
   "version": "1.0.0",
@@ -20,23 +19,4 @@
     "@vitejs/plugin-react": "^4.5.1",
     "vite": "^6.3.5"
   }
-=======
-  "name": "pharmacy-backend",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "build": "echo \"No build step required\"",
-    "start": "node server.js",
-    "dev": "node --watch server.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.2",
-    "mongoose": "^8.12.1",
-    "multer": "^2.1.1",
-    "nodemailer": "^8.0.1"
-  }
- 
->>>>>>> edbc1bdba8a9aaeb4474a8b21dd1579b908d19d7
 }
