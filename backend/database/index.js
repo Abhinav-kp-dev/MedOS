@@ -1,13 +1,31 @@
 import mongoose from 'mongoose';
 
-const MONGO_URI = process.env.MONGODB_URI || "mongodb+srv://abhinavkp2233_db_user:abhinav@cluster0.i9euyc2.mongodb.net/pharmacore?appName=Cluster0&retryWrites=true&w=majority";
+const MONGO_URI = process.env.MONGODB_URI;
+
+function printAtlasTroubleshooting() {
+  console.error('MongoDB Atlas troubleshooting checklist:');
+  console.error('1) Add your current public IP in Atlas: Security > Network Access');
+  console.error('2) Verify DB user credentials in Atlas: Security > Database Access');
+  console.error('3) Ensure MONGODB_URI includes your database name (example: /pharmacore)');
+  console.error('4) If your password has special characters, URL-encode it in MONGODB_URI');
+}
 
 export async function connectDB() {
+  if (!MONGO_URI) {
+    console.error('❌ Missing MONGODB_URI in backend/.env');
+    console.error('Set MONGODB_URI and restart the backend server.');
+    process.exit(1);
+  }
+
   try {
-    await mongoose.connect(MONGO_URI);
+    await mongoose.connect(MONGO_URI, {
+      serverSelectionTimeoutMS: 10000,
+      connectTimeoutMS: 10000,
+    });
     console.log('✅ MongoDB Atlas connected successfully');
   } catch (err) {
     console.error('❌ MongoDB connection error:', err.message);
+    printAtlasTroubleshooting();
     process.exit(1);
   }
 }

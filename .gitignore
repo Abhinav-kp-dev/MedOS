@@ -66,4 +66,4 @@ pids/
 # Temporary files
 tmp/
 temp/
-*.tmp
+*.tmps 
